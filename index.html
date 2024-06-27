@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Todo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .modal {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-purple-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white rounded-lg shadow-lg w-80">
+        <div class="bg-purple-500 rounded-t-lg px-4 py-2 flex items-center justify-between">
+            <button class="text-white text-2xl">&#9776;</button>
+            <h1 class="text-white text-lg font-semibold">Todo List</h1>
+            <div></div> <!-- Empty div for spacing -->
+        </div>
+        <ul class="p-4">
+            
+        </ul>
+        <div class="flex justify-center">
+            <button id="new-task-btn"
+                class="bg-purple-500 text-white py-2 px-6 rounded-full shadow-md hover:bg-purple-600 mb-4">+ New
+                task</button>
+        </div>
+    </div>
+
+    <div id="modal"
+        class="modal fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
+        <div class="bg-white rounded-lg shadow-lg w-80 p-6">
+            <h2 class="text-lg font-semibold mb-4">Add New Task</h2>
+            <input id="new-task-input" type="text" class="w-full p-2 border border-gray-300 rounded mb-4"
+                placeholder="Enter task">
+            <div class="flex justify-end">
+                <button id="cancel-btn"
+                    class="bg-gray-300 text-gray-700 py-2 px-4 rounded mr-2 hover:bg-gray-400">Cancel</button>
+                <button id="add-btn" class="bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('modal');
+        const newTaskBtn = document.getElementById('new-task-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const addBtn = document.getElementById('add-btn');
+        const newTaskInput = document.getElementById('new-task-input');
+        const taskList = document.querySelector('ul');
+    
+        newTaskBtn.addEventListener('click', () => {
+            modal.classList.add('modal-active');
+        });
+    
+        cancelBtn.addEventListener('click', () => {
+            modal.classList.remove('modal-active');
+            newTaskInput.value = '';
+        });
+    
+        addBtn.addEventListener('click', () => {
+            const taskText = newTaskInput.value.trim();
+            if (taskText !== '') {
+                const li = document.createElement('li');
+                li.className = 'flex items-center justify-between py-2';
+                li.innerHTML = `
+                    <label class="flex items-center">
+                        <input type="checkbox" name="task" class="text-purple-500">
+                        <span class="ml-2">${taskText}</span>
+                    </label>
+                    <button class="text-gray-500 hover:text-red-500 remove-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                `;
+                taskList.appendChild(li);
+                modal.classList.remove('modal-active');
+                newTaskInput.value = '';
+            }
+        });
+    
+        taskList.addEventListener('click', (event) => {
+            if (event.target.closest('.remove-btn')) {
+                const li = event.target.closest('li');
+                li.remove();
+            }
+        });
+    </script>
+    
+
+</body>
+
+</html>
