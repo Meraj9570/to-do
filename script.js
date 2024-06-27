@@ -43,7 +43,7 @@ function loadCompletedTasks() {
             console.log(task.completed)
 
             if (task.completed) {
-                completedTasksHTML += `<li>${task.text}</li>`;
+                completedTasksHTML += `<li class="text-green-500">${task.text}</li>`;
             }
         });
     }
@@ -76,7 +76,7 @@ function loadPendingTasks() {
         tasks.forEach(task => {
 
             if (task.completed == false) {
-                pendingTasksHTML += `<li>${task.text}</li>`;
+                pendingTasksHTML += `<li class="text-red-500">${task.text}</li>`;
             }
         });
     }
