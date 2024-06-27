@@ -4,6 +4,8 @@ const navModal = document.getElementById('navModal');
 const navCloseBtn = document.getElementById('navCloseBtn');
 const completeBtn = document.getElementById('completeBtn');
 const completeModalCloseBtn = document.getElementById('completeModalClose');
+const pendingBtn = document.getElementById('pendingBtn');
+const pendingModalCloseBtn = document.getElementById('pendingModalClose');
 const newTaskBtn = document.getElementById('new-task-btn');
 const taskList = document.querySelector('ul');
 let editingTask = null; // Variable to store the task being edited
@@ -49,6 +51,39 @@ function loadCompletedTasks() {
         return "No task has been completed";
     }
     return completedTasksHTML;
+}
+
+
+pendingModalCloseBtn.addEventListener('click', () => {
+    pendingModal.classList.remove('pendingModal-active');
+
+});
+
+pendingBtn.addEventListener('click', () => {
+    const pendingModal = document.getElementById('pendingModal');
+    const pendingList = document.getElementById('pending-tasks-list');
+    pendingModal.classList.add('pendingModal-active');
+    navModal.classList.remove('navModal-active');
+    pendingList.innerHTML = `
+            ${loadPendingTasks()}
+    `;
+});
+
+function loadPendingTasks() {
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    let pendingTasksHTML = '';
+    if (tasks) {
+        tasks.forEach(task => {
+
+            if (task.completed == false) {
+                pendingTasksHTML += `<li>${task.text}</li>`;
+            }
+        });
+    }
+    if(pendingTasksHTML == ''){
+        return "No task has been pending";
+    }
+    return pendingTasksHTML;
 }
 
 

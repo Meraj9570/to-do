@@ -1,10 +1,10 @@
-.modal, .navModal, .completeModal {
+.modal, .navModal, .completeModal, .pendingModal {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
 }
 
-.modal-active, .navModal-active, .completeModal-active {
+.modal-active, .navModal-active, .completeModal-active, .pendingModal-active {
     opacity: 1;
     pointer-events: auto;
 }
