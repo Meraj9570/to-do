@@ -8,7 +8,7 @@ const pendingBtn = document.getElementById('pendingBtn');
 const pendingModalCloseBtn = document.getElementById('pendingModalClose');
 const newTaskBtn = document.getElementById('new-task-btn');
 const taskList = document.querySelector('ul');
-let editingTask = null; // Variable to store the task being edited
+let editingTask = null; 
 
 // Load tasks from localStorage when the page loads
 document.addEventListener('DOMContentLoaded', loadTasks);
