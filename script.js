@@ -10,7 +10,6 @@ const newTaskBtn = document.getElementById('new-task-btn');
 const taskList = document.querySelector('ul');
 let editingTask = null; 
 
-// Load tasks from localStorage when the page loads
 document.addEventListener('DOMContentLoaded', loadTasks);
 
 navToggle.addEventListener('click', () => {
