@@ -21,7 +21,6 @@ navCloseBtn.addEventListener('click', () => {
 
 completeModalCloseBtn.addEventListener('click', () => {
     completeModal.classList.remove('completeModal-active');
-
 });
 
 completeBtn.addEventListener('click', () => {
@@ -51,7 +50,6 @@ function loadCompletedTasks() {
     }
     return completedTasksHTML;
 }
-
 
 pendingModalCloseBtn.addEventListener('click', () => {
     pendingModal.classList.remove('pendingModal-active');
