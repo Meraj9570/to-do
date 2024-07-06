@@ -38,8 +38,6 @@ function loadCompletedTasks() {
     let completedTasksHTML = '';
     if (tasks) {
         tasks.forEach(task => {
-            console.log(task.completed)
-
             if (task.completed) {
                 completedTasksHTML += `<li class="text-green-500">${task.text}</li>`;
             }
