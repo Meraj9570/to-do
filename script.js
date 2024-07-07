@@ -51,7 +51,6 @@ function loadCompletedTasks() {
 
 pendingModalCloseBtn.addEventListener('click', () => {
     pendingModal.classList.remove('pendingModal-active');
-
 });
 
 pendingBtn.addEventListener('click', () => {
@@ -69,7 +68,6 @@ function loadPendingTasks() {
     let pendingTasksHTML = '';
     if (tasks) {
         tasks.forEach(task => {
-
             if (task.completed == false) {
                 pendingTasksHTML += `<li class="text-red-500">${task.text}</li>`;
             }
@@ -80,7 +78,6 @@ function loadPendingTasks() {
     }
     return pendingTasksHTML;
 }
-
 
 function showModal(title, buttonText, taskText = '') {
     modal.innerHTML = `
