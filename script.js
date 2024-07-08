@@ -90,8 +90,8 @@ function showModal(title, buttonText, taskText = '') {
             </div>
         </div>
     `;
-    modal.classList.add('modal-active');
 
+    modal.classList.add('modal-active');
     const cancelBtn = document.getElementById('cancel-btn');
     const actionBtn = document.getElementById('action-btn');
     const taskInput = document.getElementById('task-input');
@@ -106,7 +106,6 @@ function showModal(title, buttonText, taskText = '') {
         const taskText = taskInput.value.trim();
         if (taskText !== '') {
             if (editingTask) {
-                // Update existing task
                 editingTask.querySelector('span').textContent = taskText;
                 editingTask.querySelector('span').classList.remove('completed');
                 saveTasks();
