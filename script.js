@@ -110,7 +110,6 @@ function showModal(title, buttonText, taskText = '') {
                 editingTask.querySelector('span').classList.remove('completed');
                 saveTasks();
             } else {
-                // Add new task
                 const li = document.createElement('li');
                 li.className = 'flex items-center justify-between py-2';
                 li.innerHTML = `
