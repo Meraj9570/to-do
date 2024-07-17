@@ -133,7 +133,6 @@ function showModal(title, buttonText, taskText = '') {
                 taskList.appendChild(li);
                 saveTasks();
             }
-
             modal.classList.remove('modal-active');
             taskInput.value = '';
             editingTask = null;
@@ -155,7 +154,6 @@ taskList.addEventListener('click', (event) => {
         editingTask = li;
         showModal('Edit Task', 'Save', taskText);
     }
-
     if (removeBtn) {
         const li = removeBtn.closest('li');
         li.remove();
